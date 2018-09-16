@@ -14,7 +14,9 @@ class AddToCmsUsers extends Migration
     public function up()
     {
         Schema::table('cms_users', function (Blueprint $table) {
-            //
+            $table->string('identity_type')->nullable();
+            $table->string('identity_no')->nullable();
+            $table->string('phonenumber')->nullable();
         });
     }
 
@@ -26,7 +28,9 @@ class AddToCmsUsers extends Migration
     public function down()
     {
         Schema::table('cms_users', function (Blueprint $table) {
-            //
+            $table->dropColumn('identity_type');
+            $table->dropColumn('identity_no');
+            $table->dropColumn('phonenumber');
         });
     }
 }
