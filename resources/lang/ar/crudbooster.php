@@ -244,7 +244,7 @@ return [
     'datamodal_browse_data' => 'استعراض البيانات',
     'datamodal_browse_file' => 'استعراض الملف',
 
-    //child 
+    //child
     'table_detail' => 'تفاصيل الجدول',
     'your_file_size_is_too_big' => 'حجم الملف كبير جدا',
     'save_changes' => 'حفظ التغييرات',
@@ -252,4 +252,5 @@ return [
     'this_field_is_required' => 'الحقل اجباري',
     'text_form' => 'نموذح',
     "your_file_extension_is_not_allowed " => "امتداد الملف غير مسموح به !",
+    'Users' => 'المستخدمين',
 ];
