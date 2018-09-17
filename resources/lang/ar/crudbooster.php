@@ -122,7 +122,7 @@ return [
 
     'import_page_title' => 'استيراد :module',
     'dashboard_default_text' => 'مرحبا بك في شاشة :appname',
-    'form_back_to_list' => 'العودة إلى قائمة البيانات :module',
+    'form_back_to_list' => 'العودة إلى قائمة :module',
     'not_logged_in' => 'لم تقم بتسجيل الدخول !',
     'menu_navigation' => "التنقل",
     'table_data_not_found' => "لا توجد بيانات متوفرة",
@@ -138,8 +138,8 @@ return [
     'online' => 'متصل',
     'controller_route_404' => 'لم يتم العثور على الرابط المطلوب',
     'home' => 'الرئيسية',
-    'Notifications' => 'Notifications',
-    'Privileges' => 'Privileges',
+    'Notifications' => 'إشعارات',
+    'Privileges' => 'الصلاحيات',
     'Privileges_Roles' => 'صلاحيات الوصول',
     'Add_New_Privilege' => 'اضافة صلاحية',
     'List_Privilege' => 'عرض الصلاحيات',
@@ -253,4 +253,7 @@ return [
     'text_form' => 'نموذح',
     "your_file_extension_is_not_allowed " => "امتداد الملف غير مسموح به !",
     'Users' => 'المستخدمين',
+    'filter_rows_total' => 'المجموع',
+    'filter_rows_to' => 'إلى',
+    'filter_rows_of' => 'من',
 ];
