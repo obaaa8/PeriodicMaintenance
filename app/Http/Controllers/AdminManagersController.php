@@ -30,21 +30,21 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Name","name"=>"name"];
-			$this->col[] = ["label"=>"Photo","name"=>"photo","image"=>true];
-			$this->col[] = ["label"=>"Email","name"=>"email"];
-			$this->col[] = ["label"=>"Phonenumber","name"=>"phonenumber"];
+			$this->col[] = ["label"=>trans("table.Name"),"name"=>"name"];
+			$this->col[] = ["label"=>trans("table.Photo"),"name"=>"photo","image"=>true];
+			$this->col[] = ["label"=>trans("table.Email"),"name"=>"email"];
+			$this->col[] = ["label"=>trans("table.Phonenumber"),"name"=>"phonenumber"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Photo','name'=>'photo','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
-			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:cms_users','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
-			$this->form[] = ['label'=>'Identity Type','name'=>'identity_type','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','help'=>'Minimum 5 characters. Please leave empty if you did not change the password.'];
-			$this->form[] = ['label'=>'Identity No','name'=>'identity_no','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Phonenumber','name'=>'phonenumber','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Password','name'=>'password','type'=>'password','validation'=>'min:3|max:32','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>trans("table.Name"),'name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>trans("table.Photo"),'name'=>'photo','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
+			$this->form[] = ['label'=>trans("table.Email"),'name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:cms_users','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
+			$this->form[] = ['label'=>trans("table.IdentityType"),'name'=>'identity_type','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','help'=>'Minimum 5 characters. Please leave empty if you did not change the password.'];
+			$this->form[] = ['label'=>trans("table.IdentityNo"),'name'=>'identity_no','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>trans("table.Phonenumber"),'name'=>'phonenumber','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>trans("table.Password"),'name'=>'password','type'=>'password','validation'=>'min:3|max:32','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
