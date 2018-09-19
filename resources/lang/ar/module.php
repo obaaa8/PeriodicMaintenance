@@ -15,5 +15,8 @@ return [
 
     'Manager' => 'المدراء',
     'Technician' => 'الفنيين',
+    'Buildings' => 'المباني',
+    'Rooms' => 'الغرف',
+    'Devices' => 'اﻷجهزة',
 
 ];
