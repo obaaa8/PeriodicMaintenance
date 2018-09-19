@@ -16,6 +16,10 @@ return [
     'Users' => 'المستخدمين',
     'Technician' => 'الفنيين',
     'Manager' => 'المدراء',
+    'Buildings' => 'المباني',
+    'Rooms' => 'الغرف',
+    'Installations' => 'المنشآت',
+    'Devices' => 'اﻷجهزة',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
