@@ -1,23 +1,22 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
-    'Name' => 'اﻹسم',
-    'Photo' => 'صورة',
-    'Email' => 'البريد اﻹلكتروني',
-    'IdentityType' => 'نوع الهوية',
-    'IdentityNo' => 'رقم الهوية',
-    'Phonenumber' => 'رقم الجوال',
-    'Password' => 'كلمة السر',
+  'Name' => 'اﻹسم',
+  'Photo' => 'صورة',
+  'Email' => 'البريد اﻹلكتروني',
+  'IdentityType' => 'نوع الهوية',
+  'IdentityNo' => 'رقم الهوية',
+  'Phonenumber' => 'رقم الجوال',
+  'Password' => 'كلمة السر',
+  'buildings_number' => 'رقم المبنى',
+  'buildings_name' => 'إسم المبنى',
+  'rooms_number' => 'رقم الغرفة',
+  'rooms_name' => 'اسم الغرفة',
+  'building' => 'المبنى',
+  'Brand' => 'العلامة التجارية',
+  // 'name' => 'اﻹسم',
+  'Serial Number' => 'الرقم المتسلسل',
+  'Ip' => 'IP',
+  'Rooms' => 'الغرفة',
+  'Note' => 'ملاحظة',
 ];
