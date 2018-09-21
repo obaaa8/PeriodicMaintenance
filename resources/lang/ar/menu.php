@@ -20,6 +20,8 @@ return [
     'Rooms' => 'الغرف',
     'Installations' => 'المنشآت',
     'Devices' => 'اﻷجهزة',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'periodicMaintenances' => 'الصيانة الدورية',
+    'PeriodicMaintenances' => 'عرض الصيانة',
+    'AddMaintenances' => 'إضافة صيانة',
 
 ];
