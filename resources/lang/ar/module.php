@@ -18,5 +18,6 @@ return [
     'Buildings' => 'المباني',
     'Rooms' => 'الغرف',
     'Devices' => 'اﻷجهزة',
+    'PeriodicMaintenances' => 'الصيانة الدورية',
 
 ];
