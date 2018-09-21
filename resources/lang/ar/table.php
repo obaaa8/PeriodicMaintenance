@@ -19,4 +19,9 @@ return [
   'Ip' => 'IP',
   'Rooms' => 'الغرفة',
   'Note' => 'ملاحظة',
+  'devices_serial_number' => 'الرقم المتسلسل للجهاز',
+  'devices' => 'الجهاز',
+  'technicians_id'  => 'الفني',
+  'report'  => 'التقرير',
+  'created_at'  => 'التاريخ',
 ];
