@@ -23,5 +23,6 @@ return [
     'periodicMaintenances' => 'الصيانة الدورية',
     'PeriodicMaintenances' => 'عرض الصيانة',
     'AddMaintenances' => 'إضافة صيانة',
+    'report' => 'التقارير',
 
 ];
