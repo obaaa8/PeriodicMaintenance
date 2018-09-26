@@ -4,6 +4,7 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+  use Carbon\Carbon;
 
 	class AdminPeriodicMaintenancesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
@@ -17,31 +18,52 @@
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->button_add = true;
+      $this->button_action_style = "button_icon";
+      if (CRUDBooster::myPrivilegeId() == 3) {
+        // $this->button_add = false;
+        $this->button_export = false;
+      } else {
+        $this->button_export = true;
+      }
+      $this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
 			$this->button_detail = true;
 			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
-			$this->button_export = true;
 			$this->table = "periodic_maintenances";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>trans("table.devices_serial_number"),"name"=>"devices_serial_number"];
+			$this->col[] = ["label"=>'ID',"name"=>"id"];
+
+			$this->col[] = ["label"=>trans("table.devices_serial_number"),"name"=>"devices_serial_number","callback"=>function($row) {
+        return '<a href="'.url(config('crudbooster.ADMIN_PATH').'/devices/detail/'.DB::table('devices')->where('serial_number',$row->devices_serial_number)->value('id')).'">'.$row->devices_serial_number.'</a>';
+      }];
+
 			$this->col[] = ["label"=>trans("table.devices"),"name"=>"devices_serial_number","join"=>"devices,name"];
-			$this->col[] = ["label"=>trans("table.technicians_id"),"name"=>"technicians_id","join"=>"cms_users,name"];
-			$this->col[] = ["label"=>trans("table.report"),"name"=>"report"];
-			$this->col[] = ["label"=>trans("table.created_at"),"name"=>"created_at"];
+
+      if (CRUDBooster::myPrivilegeId() != 3) {
+			  $this->col[] = ["label"=>trans("table.technicians_id"),"name"=>"technicians_id","join"=>"cms_users,name","callback"=>function($row) {
+          return '<a href="'.url(config('crudbooster.ADMIN_PATH').'/technicians/detail/'.$row->technicians_id).'">'.DB::table('cms_users')->where('id',$row->technicians_id)->value('name').'</a>';
+        }];
+      }
+
+			$this->col[] = ["label"=>trans("table.created_at"),"name"=>"created_at","callback"=>function($row) {
+        $daata = Carbon::parse($row->created_at);
+        return $daata->format("Y-m-d");
+      }];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>trans("table.devices_serial_number"),'name'=>'devices_serial_number','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'devices,serial_number'];
-			$this->form[] = ['label'=>trans("table.technicians_id"),'name'=>'technicians_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>trans("table.report"),'name'=>'report','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+      if (CRUDBooster::myPrivilegeId() != 3) {
+        $this->form[] = ['label'=>trans("table.technicians_id"),'name'=>'technicians_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+      }
+      $this->form[] = ['label'=>trans("table.report"),'name'=>'report','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -136,7 +158,19 @@
 	        |
 	        */
 	        $this->index_statistic = array();
-
+          if (CRUDBooster::myPrivilegeId() == 3) {
+            $this->index_statistic[] = ['label'=>trans('crudbooster.today'),'count'=>DB::table('periodic_maintenances')->where('technicians_id',CRUDBooster::myPrivilegeId())->whereDate('created_at',Carbon::today())->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-4'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.yesterday'),'count'=>DB::table('periodic_maintenances')->where('technicians_id',CRUDBooster::myPrivilegeId())->whereDate('created_at',Carbon::yesterday()->format('Y-m-d'))->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-4'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.last_week'),'count'=>DB::table('periodic_maintenances')->where('technicians_id',CRUDBooster::myPrivilegeId())->whereDate('created_at','<=',Carbon::today()->format('Y-m-d'))->whereDate('created_at','>=',Carbon::today()->subWeek()->format('Y-m-d'))->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-4'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.last_month'),'count'=>DB::table('periodic_maintenances')->where('technicians_id',CRUDBooster::myPrivilegeId())->whereDate('created_at','<=',Carbon::today()->format('Y-m-d'))->whereDate('created_at','>=',Carbon::today()->subMonth()->format('Y-m-d'))->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-6'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.total'),'count'=>DB::table('periodic_maintenances')->where('technicians_id',CRUDBooster::myPrivilegeId())->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-6'];
+          }else {
+            $this->index_statistic[] = ['label'=>trans('crudbooster.today'),'count'=>DB::table('periodic_maintenances')->whereDate('created_at',Carbon::today())->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-4'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.yesterday'),'count'=>DB::table('periodic_maintenances')->whereDate('created_at',Carbon::yesterday()->format('Y-m-d'))->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-4'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.last_week'),'count'=>DB::table('periodic_maintenances')->whereDate('created_at','<=',Carbon::today()->format('Y-m-d'))->whereDate('created_at','>=',Carbon::today()->subWeek()->format('Y-m-d'))->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-4'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.last_month'),'count'=>DB::table('periodic_maintenances')->whereDate('created_at','<=',Carbon::today()->format('Y-m-d'))->whereDate('created_at','>=',Carbon::today()->subMonth()->format('Y-m-d'))->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-6'];
+            $this->index_statistic[] = ['label'=>trans('crudbooster.total'),'count'=>DB::table('periodic_maintenances')->count(),'icon'=>'fa fa-wrench','color'=>'yellow','width'=>'col-sm-6'];
+          }
 
 
 	        /*
