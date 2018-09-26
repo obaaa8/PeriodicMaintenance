@@ -65,7 +65,6 @@
 	        */
 	        $this->sub_module = array();
 
-
 	        /*
 	        | ----------------------------------------------------------------------
 	        | Add More Action Button / Menu
@@ -236,7 +235,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-
+          if (CRUDBooster::myPrivilegeId() == 3) {
+            $query->where('periodic_maintenances.technicians_id',CRUDBooster::myId());
+          }
 	    }
 
 	    /*
@@ -258,7 +259,9 @@
 	    */
 	    public function hook_before_add(&$postdata) {
 	        //Your code here
-
+          if (CRUDBooster::myPrivilegeId() == 3) {
+            $postdata['technicians_id'] = CRUDBooster::myId();
+          }
 	    }
 
 	    /*
@@ -283,7 +286,9 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {
 	        //Your code here
-
+          if (CRUDBooster::myPrivilegeId() == 3) {
+            $postdata['technicians_id'] = CRUDBooster::myId();
+          }
 	    }
 
 	    /*
