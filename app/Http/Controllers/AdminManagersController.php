@@ -73,6 +73,7 @@
 	        |
 	        */
 	        $this->sub_module = array();
+          $this->sub_module[] = ['label'=>trans('crudbooster.maintenances'),'path'=>'periodic_maintenances','parent_columns'=>'report','foreign_key'=>'technicians_id','button_color'=>'success','button_icon'=>'fa fa-wrench'];
 
 
 	        /*
