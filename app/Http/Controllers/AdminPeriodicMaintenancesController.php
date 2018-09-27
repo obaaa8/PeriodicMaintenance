@@ -39,11 +39,12 @@
 			$this->col = [];
 			$this->col[] = ["label"=>'ID',"name"=>"id"];
 
+      //
 			$this->col[] = ["label"=>trans("table.devices_serial_number"),"name"=>"devices_serial_number","callback"=>function($row) {
         return '<a href="'.url(config('crudbooster.ADMIN_PATH').'/devices/detail/'.DB::table('devices')->where('serial_number',$row->devices_serial_number)->value('id')).'">'.$row->devices_serial_number.'</a>';
       }];
 
-			$this->col[] = ["label"=>trans("table.devices"),"name"=>"devices_serial_number","join"=>"devices,name"];
+			// $this->col[] = ["label"=>trans("table.devices"),"name"=>"devices_serial_number","join"=>"devices,name"];
 
       if (CRUDBooster::myPrivilegeId() != 3) {
 			  $this->col[] = ["label"=>trans("table.technicians_id"),"name"=>"technicians_id","join"=>"cms_users,name","callback"=>function($row) {
