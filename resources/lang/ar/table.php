@@ -24,4 +24,5 @@ return [
   'technicians_id'  => 'الفني',
   'report'  => 'التقرير',
   'created_at'  => 'التاريخ',
+  'number'  => 'الرقم',
 ];
