@@ -1,6 +1,12 @@
 @extends('crudbooster::admin_template')
 @section('content')
 
+  @if ( Session::get('error') != '' )
+      <div class='alert alert-warning'>
+          {{ Session::get('error') }}
+      </div>
+  @endif
+
   <h2>{{ trans('crudbooster.maintenances_report') }}</h2>
 
   <ul class="nav nav-tabs nav-justified">
@@ -39,7 +45,7 @@
                 <div class="form-group">
                   <label>{{ trans('crudbooster.report_type') }}</label>
                   <select id="Shift_id" name="general_type" class="form-control border-input" required="true">
-                    <option disabled selected value> -- {{  trans('crudbooster.datamodal_select') }} -- </option>
+                    <option disabled selected > -- {{  trans('crudbooster.datamodal_select') }} -- </option>
                     <option value="general_general">{{  trans('crudbooster.General') }}</option>
                     <option value="general_mini">{{  trans('crudbooster.mini') }}</option>
                   </select>
@@ -49,7 +55,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>{{  trans('crudbooster.filter_from') }}</label>
-                        <input type="date" required="true" name="general_form"class="form-control border-input">
+                        <input type="date" required="true" name="general_from"class="form-control border-input">
                     </div>
                 </div>
 
@@ -107,7 +113,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>{{  trans('crudbooster.filter_from') }}</label>
-                        <input type="date" required="true" name="building_form"class="form-control border-input">
+                        <input type="date" required="true" name="building_from"class="form-control border-input">
                     </div>
                 </div>
 
@@ -128,8 +134,8 @@
     </form>
   </div>
       </div>
-      <div id="{{ trans('menu.Rooms') }}" class="tab-pane fade">
-        <div class="panel panel-default">
+<div id="{{ trans('menu.Rooms') }}" class="tab-pane fade">
+  <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">{{ trans('menu.Rooms') }}</h3>
     </div>
@@ -143,7 +149,7 @@
             <div class="row">
               <div class="col-md-3">
                 <label>{{ trans('table.rooms_number') }}</label>
-                <input list="room" required="true" name="room_name" class="form-control" placeholder="{{ trans('table.rooms_number') }}" aria-describedby="basic-addon2">
+                <input list="room" required="true" name="rooms_number" class="form-control" placeholder="{{ trans('table.rooms_number') }}" aria-describedby="basic-addon2">
                 <datalist id="room">
                   @foreach ($rooms as $value)
                   <option value="{{ $value->number }}">
@@ -165,7 +171,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>{{  trans('crudbooster.filter_from') }}</label>
-                        <input type="date" required="true" name="room_{{  trans('crudbooster.filter_from') }}"class="form-control border-input">
+                        <input type="date" required="true" name="room_from"class="form-control border-input">
                     </div>
                 </div>
 
@@ -185,9 +191,12 @@
       </div>
     </form>
   </div>
-      </div>
-      <div id="{{ trans('menu.Technician') }}" class="tab-pane fade">
-        <div class="panel panel-default">
+</div>
+
+
+{{-- Technician --}}
+<div id="{{ trans('menu.Technician') }}" class="tab-pane fade">
+  <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">{{ trans('menu.Technician') }}</h3>
     </div>
@@ -223,7 +232,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>{{  trans('crudbooster.filter_from') }}</label>
-                        <input type="date" required="true" name="technician_{{  trans('crudbooster.filter_from') }}"class="form-control border-input">
+                        <input type="date" required="true" name="technician_from"class="form-control border-input">
                     </div>
                 </div>
 
@@ -259,7 +268,7 @@
             <div class="row">
               <div class="col-md-3">
                 <label>{{ trans('table.devices_serial_number') }}</label>
-                <input list="devices" required="true" name="device_name" class="form-control" placeholder="{{ trans('table.devices_serial_number') }}" aria-describedby="basic-addon2">
+                <input list="devices" required="true" name="devices_serial_number" class="form-control" placeholder="{{ trans('table.devices_serial_number') }}" aria-describedby="basic-addon2">
                 <datalist id="devices">
                   @foreach ($devices as $value)
                   <option value="{{ $value->serial_number }}">
@@ -281,7 +290,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>{{  trans('crudbooster.filter_from') }}</label>
-                        <input type="date" required="true" name="device_form"class="form-control border-input">
+                        <input type="date" required="true" name="device_from"class="form-control border-input">
                     </div>
                 </div>
 
