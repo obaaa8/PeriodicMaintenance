@@ -296,6 +296,7 @@
           if (CRUDBooster::myPrivilegeId() == 3) {
             $postdata['technicians_id'] = CRUDBooster::myId();
           }
+          $postdata['devices_serial_number'] = DB::table('devices')->where('id',$postdata['devices_serial_number'])->value('serial_number');
 	    }
 
 	    /*
